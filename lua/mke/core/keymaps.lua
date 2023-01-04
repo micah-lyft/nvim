@@ -8,22 +8,19 @@ keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "<leader>s", ":split<CR>")
 keymap.set("n", "<leader>v", ":vsplit<CR>")
-keymap.set("n", "<leader>v", ":vsplit<CR>")
+keymap.set("n", "<leader>t", ":terminal<CR>") -- open new tab
 keymap.set("n", "<leader>x", ":close<CR>")
 
-
-keymap.set("n", "<leader>t", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<leader>n", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<leader>c", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>p", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>q", ":tabp<CR>") --  go to previous tab
-
 
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
-
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
