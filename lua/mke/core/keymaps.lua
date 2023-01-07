@@ -6,7 +6,7 @@ local keymap = vim.keymap
 
 keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
-keymap.set("n", "<leader>s", ":split<CR>")
+keymap.set("n", "<leader>a", ":split<CR>")
 keymap.set("n", "<leader>v", ":vsplit<CR>")
 keymap.set("n", "<leader>t", ":terminal<CR>") -- open new tab
 keymap.set("n", "<leader>x", ":close<CR>")
