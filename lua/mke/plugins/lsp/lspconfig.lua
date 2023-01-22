@@ -35,6 +35,7 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+	keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", opts) -- got to declaration
 
 	-- typescript specific keymaps (e.g. rename file and update imports)
 	if client.name == "tsserver" then
@@ -84,6 +85,11 @@ lspconfig["jdtls"].setup({
 	on_attach = on_attach,
 })
 
+lspconfig["gopls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 lspconfig["clangd"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -116,3 +122,5 @@ lspconfig["sumneko_lua"].setup({
 		},
 	},
 })
+
+vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format { async = true }]])
