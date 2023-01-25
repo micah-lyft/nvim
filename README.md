@@ -7,3 +7,5 @@
 ```zsh
 git clone https://github.com/micahke/nvim.git ~/.config/nvim
 ```
+ 
+ 4) Run `:PackerSync` to install plugins
