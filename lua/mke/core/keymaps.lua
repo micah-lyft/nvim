@@ -19,6 +19,8 @@ keymap.set("n", "<leader>q", ":tabp<CR>") --  go to previous tab
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 
+keymap.set("n", "<leader>l", ":TagbarToggle<CR>")
+
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 

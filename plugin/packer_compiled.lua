@@ -212,6 +212,11 @@ _G.packer_plugins = {
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
+  tagbar = {
+    loaded = true,
+    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/tagbar",
+    url = "https://github.com/preservim/tagbar"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
