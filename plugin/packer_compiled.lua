@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/ReplaceWithRegister",
     url = "https://github.com/vim-scripts/ReplaceWithRegister"
   },
+  ["ccls.nvim"] = {
+    loaded = true,
+    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/ccls.nvim",
+    url = "https://github.com/ranjithshegde/ccls.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -154,6 +159,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["neovim-tasks"] = {
+    loaded = true,
+    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/neovim-tasks",
+    url = "https://github.com/Shatur/neovim-tasks"
   },
   ["null-ls.nvim"] = {
     loaded = true,

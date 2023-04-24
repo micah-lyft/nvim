@@ -48,6 +48,8 @@ return packer.startup(function(use)
 	-- icons
 	use("kyazdani42/nvim-web-devicons")
 
+	use("ranjithshegde/ccls.nvim")
+
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
 
@@ -91,6 +93,8 @@ return packer.startup(function(use)
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
 	use("simrat39/rust-tools.nvim")
+
+	use("Shatur/neovim-tasks")
 
 	-- use("romgrk/barbar.nvim")
 
