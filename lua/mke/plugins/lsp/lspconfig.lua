@@ -55,9 +55,24 @@ lspconfig["html"].setup({
 })
 
 lspconfig.rust_analyzer.setup({
-	server = {
-		capabilities = capabilities,
-		on_attach = on_attach,
+	on_attach = on_attach,
+	settings = {
+		["rust-analyzer"] = {
+			imports = {
+				granularity = {
+					group = "module",
+				},
+				prefix = "self",
+			},
+			cargo = {
+				buildScripts = {
+					enable = true,
+				},
+			},
+			procMacro = {
+				enable = true,
+			},
+		},
 	},
 })
 
@@ -89,6 +104,26 @@ lspconfig["gopls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
+
+lspconfig["csharp_ls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig["pyright"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig["bufls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+-- lspconfig["pylsp"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
 
 -- lspconfig["ccls"].setup({
 -- 	capabilities = capabilities,

@@ -30,7 +30,7 @@ set.ignorecase = true
 set.smartcase = true
 
 -- cursor line
-set.cursorline = true
+-- set.cursorline = true
 
 -- appearance
 set.termguicolors = true

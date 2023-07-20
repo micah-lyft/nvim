@@ -32,6 +32,7 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	use("gruvbox-community/gruvbox")
+	use("doums/darcula")
 	use("christoomey/vim-tmux-navigator")
 
 	use("szw/vim-maximizer")
@@ -110,6 +111,20 @@ return packer.startup(function(use)
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+
+	use({
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup()
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
+
+	-- use("~/Documents/nvim_gpt")
 
 	if packer_bootstrap then
 		require("packer").sync()

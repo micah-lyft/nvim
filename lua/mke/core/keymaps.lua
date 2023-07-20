@@ -33,3 +33,6 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available 
 
 vim.cmd([[noremap j gj]])
 vim.cmd([[noremap k gk]])
+
+keymap.set("n", "<C-b>", "<C-\\><C-n>")
+keymap.set("i", "<C-b>", "<C-\\><C-n>")
