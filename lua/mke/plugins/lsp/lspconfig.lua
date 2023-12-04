@@ -19,6 +19,7 @@ end
 local keymap = vim.keymap -- for conciseness
 
 local on_attach = function(client, bufnr)
+	client.server_capabilities.semanticTokensProvider = nil
 	-- keybind options
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -114,6 +115,21 @@ lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
+
+-- lspconfig["pyright"].setup({
+-- 	on_attach = on_attach,
+-- 	settings = {
+-- 		pyright = { autoImportCompletion = true },
+-- 		python = {
+-- 			analysis = {
+-- 				autoSearchPaths = true,
+-- 				diagnosticMode = "openFilesOnly",
+-- 				useLibraryCodeForTypes = true,
+-- 				typeCheckingMode = "off",
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 lspconfig["bufls"].setup({
 	capabilities = capabilities,

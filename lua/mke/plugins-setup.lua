@@ -31,7 +31,9 @@ return packer.startup(function(use)
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
 
-	use("gruvbox-community/gruvbox")
+	-- use("gruvbox-community/gruvbox")
+	use("morhetz/gruvbox")
+	-- use("ellisonleao/gruvbox.nvim")
 	use("doums/darcula")
 	use("christoomey/vim-tmux-navigator")
 
@@ -64,7 +66,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path") -- source for file system paths
 
 	-- github copilot
-	use("github/copilot.vim")
+	-- use("github/copilot.vim")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
@@ -102,6 +104,7 @@ return packer.startup(function(use)
 	-- treesitter configuration
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		commit = "cc360a9beb1b30d172438f640e2c3450358c4086",
 		run = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
@@ -123,8 +126,6 @@ return packer.startup(function(use)
 			"nvim-telescope/telescope.nvim",
 		},
 	})
-
-	-- use("~/Documents/nvim_gpt")
 
 	if packer_bootstrap then
 		require("packer").sync()
