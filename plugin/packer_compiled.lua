@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1699801871/share/lua/5.1/?.lua;/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1699801871/share/lua/5.1/?/init.lua;/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1699801871/lib/luarocks/rocks-5.1/?.lua;/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1699801871/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1699801871/lib/lua/5.1/?.so"
+local package_path_str = "/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?.lua;/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?/init.lua;/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?.lua;/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/yumyumcurryman/.cache/nvim/packer_hererocks/2.1.1692716794/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,12 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["ChatGPT.nvim"] = {
-    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fchatgpt\frequire\0" },
-    loaded = true,
-    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/ChatGPT.nvim",
-    url = "https://github.com/jackMort/ChatGPT.nvim"
-  },
   ["Comment.nvim"] = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/Comment.nvim",
@@ -130,6 +124,11 @@ _G.packer_plugins = {
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["github-nvim-theme"] = {
+    loaded = true,
+    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
+    url = "https://github.com/projekt0n/github-nvim-theme"
+  },
   gruvbox = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/gruvbox",
@@ -151,6 +150,11 @@ _G.packer_plugins = {
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["lunar.nvim"] = {
+    loaded = true,
+    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/lunar.nvim",
+    url = "https://github.com/LunarVim/lunar.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -166,15 +170,15 @@ _G.packer_plugins = {
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  naysayer = {
+    loaded = true,
+    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/naysayer",
+    url = "https://github.com/alljokecake/naysayer-theme.nvim"
+  },
   ["neovim-tasks"] = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/neovim-tasks",
     url = "https://github.com/Shatur/neovim-tasks"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -253,6 +257,11 @@ _G.packer_plugins = {
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
+  ["vim-colors-xcode"] = {
+    loaded = true,
+    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/vim-colors-xcode",
+    url = "https://github.com/lunacookies/vim-colors-xcode"
+  },
   ["vim-maximizer"] = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/vim-maximizer",
@@ -267,6 +276,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  vimtex = {
+    loaded = true,
+    path = "/Users/yumyumcurryman/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
   }
 }
 
@@ -275,10 +289,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for lspsaga.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\flspsaga\frequire\0", "config", "lspsaga.nvim")
 time([[Config for lspsaga.nvim]], false)
--- Config for: ChatGPT.nvim
-time([[Config for ChatGPT.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fchatgpt\frequire\0", "config", "ChatGPT.nvim")
-time([[Config for ChatGPT.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]

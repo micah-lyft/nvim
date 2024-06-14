@@ -99,6 +99,8 @@ return packer.startup(function(use)
 
 	use("Shatur/neovim-tasks")
 
+	use("lunacookies/vim-colors-xcode")
+
 	-- use("romgrk/barbar.nvim")
 
 	-- treesitter configuration
@@ -115,17 +117,39 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
-	use({
-		"jackMort/ChatGPT.nvim",
-		config = function()
-			require("chatgpt").setup()
-		end,
-		requires = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	})
+	-- use({
+	-- 	"jackMort/ChatGPT.nvim",
+	-- 	config = function()
+	-- 		require("chatgpt").setup()
+	-- 	end,
+	-- 	requires = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 	},
+	-- })
+	use("LunarVim/lunar.nvim")
+	use({ "projekt0n/github-nvim-theme" })
+	use({ "alljokecake/naysayer-theme.nvim", as = "naysayer" })
+	-- use({
+	-- 	"epwalsh/obsidian.nvim",
+	-- 	tag = "*", -- recommended, use latest release instead of latest commit
+	-- 	requires = {
+	-- 		-- Required.
+	-- 		"nvim-lua/plenary.nvim",
+	--
+	-- 		-- see below for full list of optional dependencies 👇
+	-- 	},
+	-- 	config = function() end,
+	-- })
+
+	use("lervag/vimtex")
+	-- use({
+	-- 	"notjedi/nvim-rooter.lua",
+	-- 	config = function()
+	-- 		require("nvim-rooter").setup()
+	-- 	end,
+	-- })
 
 	if packer_bootstrap then
 		require("packer").sync()

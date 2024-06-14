@@ -111,6 +111,36 @@ lspconfig["csharp_ls"].setup({
 	on_attach = on_attach,
 })
 
+lspconfig.texlab.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	-- settings = {
+	-- 	texlab = {
+	-- 		auxDirectory = ".",
+	-- 		bibtexFormatter = "texlab",
+	-- 		build = {
+	-- 			args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+	-- 			executable = "latexmk",
+	-- 			forwardSearchAfter = false,
+	-- 			onSave = true,
+	-- 		},
+	-- 		chktex = {
+	-- 			onEdit = false,
+	-- 			onOpenAndSave = false,
+	-- 		},
+	-- 		diagnosticsDelay = 300,
+	-- 		formatterLineLength = 80,
+	-- 		forwardSearch = {
+	-- 			args = {},
+	-- 		},
+	-- 		latexFormatter = "latexindent",
+	-- 		latexindent = {
+	-- 			modifyLineBreaks = true,
+	-- 		},
+	-- 	},
+	-- },
+})
+
 lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -153,24 +183,45 @@ lspconfig["clangd"].setup({
 })
 
 -- configure emmet language server
-lspconfig["emmet_ls"].setup({
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.emmet_ls.setup({
+	-- on_attach = on_attach,
 	capabilities = capabilities,
-	on_attach = on_attach,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+	filetypes = {
+		"css",
+		"eruby",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"less",
+		"sass",
+		"scss",
+		"svelte",
+		"pug",
+		"typescriptreact",
+		"vue",
+	},
+	init_options = {
+		html = {
+			options = {
+				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+				["bem.enabled"] = true,
+			},
+		},
+	},
 })
 
 -- configure lua server (with special settings)
-lspconfig["lua_ls"].setup({
+lspconfig.lua_ls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	settings = { -- custom settings for lua
+	settings = {
 		Lua = {
-			-- make the language server recognize "vim" global
 			diagnostics = {
 				globals = { "vim" },
 			},
 			workspace = {
-				-- make language server aware of runtime files
 				library = {
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 					[vim.fn.stdpath("config") .. "/lua"] = true,
@@ -178,6 +229,16 @@ lspconfig["lua_ls"].setup({
 			},
 		},
 	},
+	root_dir = function(fname)
+		return lspconfig.util.root_pattern("init.lua", ".git")(fname) or lspconfig.util.path.dirname(fname)
+	end,
 })
+
+-- require("nvim-rooter").setup({
+-- 	rooter_patterns = { ".git", ".hg", ".svn" },
+-- 	trigger_patterns = { "*" },
+-- 	manual = false,
+-- 	fallback_to_parent = false,
+-- })
 
 vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format { async = true }]])

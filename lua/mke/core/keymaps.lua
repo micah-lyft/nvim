@@ -38,3 +38,5 @@ keymap.set("n", "<C-b>", "<C-\\><C-n>")
 keymap.set("i", "<C-b>", "<C-\\><C-n>")
 
 vim.api.nvim_set_keymap("n", "<leader>s", ":!", { noremap = true })
+
+-- keymap.set("n", "<leader>vc", ":VimtexCompile<CR>")
