@@ -32,8 +32,8 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	-- use("gruvbox-community/gruvbox")
-	use("morhetz/gruvbox")
-	-- use("ellisonleao/gruvbox.nvim")
+	-- use("morhetz/gruvbox")
+	use("micahke/gruvbox.nvim")
 	use("doums/darcula")
 	use("christoomey/vim-tmux-navigator")
 
@@ -66,7 +66,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path") -- source for file system paths
 
 	-- github copilot
-	-- use("github/copilot.vim")
+	use("github/copilot.vim")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
@@ -97,7 +97,7 @@ return packer.startup(function(use)
 
 	use("simrat39/rust-tools.nvim")
 
-	use("Shatur/neovim-tasks")
+	-- use("Shatur/neovim-tasks")
 
 	use("lunacookies/vim-colors-xcode")
 
@@ -106,7 +106,7 @@ return packer.startup(function(use)
 	-- treesitter configuration
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		commit = "cc360a9beb1b30d172438f640e2c3450358c4086",
+		-- commit = "cc360a9beb1b30d172438f640e2c3450358c4086",
 		run = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
@@ -150,6 +150,19 @@ return packer.startup(function(use)
 	-- 		require("nvim-rooter").setup()
 	-- 	end,
 	-- })
+	use({
+		"olimorris/codecompanion.nvim",
+		config = function()
+			require("codecompanion").setup()
+		end,
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
+			"nvim-telescope/telescope.nvim", -- Optional: For using slash commands
+			"stevearc/dressing.nvim", -- Optional: Improves `vim.ui.select`
+		},
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()

@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", opts) -- got to declaration
 
 	-- typescript specific keymaps (e.g. rename file and update imports)
-	if client.name == "tsserver" then
+	if client.name == "ts_ls" then
 		keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
 		keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
 		keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
@@ -83,7 +83,14 @@ lspconfig.jdtls.setup({
 })
 
 -- configure typescript server with plugin
-typescript.setup({
+-- typescript.setup({
+-- 	server = {
+-- 		capabilities = capabilities,
+-- 		on_attach = on_attach,
+-- 	},
+-- })
+
+lspconfig["ts_ls"].setup({
 	server = {
 		capabilities = capabilities,
 		on_attach = on_attach,
@@ -96,50 +103,50 @@ lspconfig["cssls"].setup({
 	on_attach = on_attach,
 })
 
-lspconfig["jdtls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+-- lspconfig["jdtls"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
 
 lspconfig["gopls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
 
-lspconfig["csharp_ls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+-- lspconfig["csharp_ls"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
 
-lspconfig.texlab.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	-- settings = {
-	-- 	texlab = {
-	-- 		auxDirectory = ".",
-	-- 		bibtexFormatter = "texlab",
-	-- 		build = {
-	-- 			args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-	-- 			executable = "latexmk",
-	-- 			forwardSearchAfter = false,
-	-- 			onSave = true,
-	-- 		},
-	-- 		chktex = {
-	-- 			onEdit = false,
-	-- 			onOpenAndSave = false,
-	-- 		},
-	-- 		diagnosticsDelay = 300,
-	-- 		formatterLineLength = 80,
-	-- 		forwardSearch = {
-	-- 			args = {},
-	-- 		},
-	-- 		latexFormatter = "latexindent",
-	-- 		latexindent = {
-	-- 			modifyLineBreaks = true,
-	-- 		},
-	-- 	},
-	-- },
-})
+-- lspconfig.texlab.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- 	-- settings = {
+-- 	-- 	texlab = {
+-- 	-- 		auxDirectory = ".",
+-- 	-- 		bibtexFormatter = "texlab",
+-- 	-- 		build = {
+-- 	-- 			args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+-- 	-- 			executable = "latexmk",
+-- 	-- 			forwardSearchAfter = false,
+-- 	-- 			onSave = true,
+-- 	-- 		},
+-- 	-- 		chktex = {
+-- 	-- 			onEdit = false,
+-- 	-- 			onOpenAndSave = false,
+-- 	-- 		},
+-- 	-- 		diagnosticsDelay = 300,
+-- 	-- 		formatterLineLength = 80,
+-- 	-- 		forwardSearch = {
+-- 	-- 			args = {},
+-- 	-- 		},
+-- 	-- 		latexFormatter = "latexindent",
+-- 	-- 		latexindent = {
+-- 	-- 			modifyLineBreaks = true,
+-- 	-- 		},
+-- 	-- 	},
+-- 	-- },
+-- })
 
 lspconfig["pyright"].setup({
 	capabilities = capabilities,
