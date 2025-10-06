@@ -1,3 +1,5 @@
+-- TODO: remove some of the plugins that are no longer supported
+
 require("mke.plugins-setup")
 require("mke.core.colorscheme")
 require("mke.core.keymaps")
