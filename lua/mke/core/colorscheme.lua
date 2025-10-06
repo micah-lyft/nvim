@@ -3,6 +3,9 @@ if not status then
 	print("Colorscheme not found")
 	return
 end
+
+-- TODO: default to my main colorscheme
+
 -- if os.getenv("TMUX") then
 -- 	local status, _ = pcall(vim.cmd, "colorscheme gruvbox")
 -- 	if not status then
