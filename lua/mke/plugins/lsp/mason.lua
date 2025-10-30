@@ -28,8 +28,10 @@ mason_lspconfig.setup({
 		"lua_ls",
 		"emmet_ls",
 	},
-	-- auto-install configured servers (with lspconfig)
-	automatic_installation = true, -- not the same as ensure_installed
+	-- NOTE: automatic_installation removed in v2.0.0 with new vim.lsp.config API
+	-- Use automatic_enable instead (enabled by default)
+	-- automatic_enable will call vim.lsp.enable() for installed servers
+	automatic_enable = true,
 })
 
 mason_null_ls.setup({
@@ -37,7 +39,8 @@ mason_null_ls.setup({
 	ensure_installed = {
 		"prettier", -- ts/js formatter
 		"stylua", -- lua formatter
-		"eslint_d", -- ts/js linter
+		-- NOTE: eslint_d removed from none-ls core, commented out
+		-- "eslint_d", -- ts/js linter
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,

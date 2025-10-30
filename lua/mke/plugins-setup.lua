@@ -49,7 +49,7 @@ return packer.startup(function(use)
 	use("nvim-tree/nvim-tree.lua")
 
 	-- icons
-	use("kyazdani42/nvim-web-devicons")
+	use("nvim-tree/nvim-web-devicons")
 
 	use("ranjithshegde/ccls.nvim")
 
@@ -80,20 +80,15 @@ return packer.startup(function(use)
 	-- configuring lsp servers
 	use("neovim/nvim-lspconfig") -- easily configure language servers
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-	-- use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		config = function()
-			require("lspsaga").setup({})
-		end,
-	})
-	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+	-- enhanced lsp uis (configured in lua/mke/plugins/lsp/lspsaga.lua)
+	use("nvimdev/lspsaga.nvim")
+	-- NOTE: typescript.nvim is deprecated and causes lspconfig warnings
+	-- use("jose-elias-alvarez/typescript.nvim")
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
 	-- formatting & linting
-	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	use("nvimtools/none-ls.nvim") -- configure formatters & linters (maintained fork of null-ls)
+	use("jay-babu/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
 	use("simrat39/rust-tools.nvim")
 

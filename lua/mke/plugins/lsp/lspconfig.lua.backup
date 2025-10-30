@@ -1,5 +1,8 @@
--- NOTE: Migrated from require('lspconfig') to vim.lsp.config (Neovim 0.11+)
--- No longer need to import lspconfig plugin
+-- import lspconfig plugin safely
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
+	return
+end
 
 -- import cmp-nvim-lsp plugin safely
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -40,15 +43,12 @@ end
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- configure html server
-vim.lsp.config("html", {
+lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-vim.lsp.enable("html")
 
--- configure rust_analyzer server
-vim.lsp.config("rust_analyzer", {
-	capabilities = capabilities,
+lspconfig.rust_analyzer.setup({
 	on_attach = on_attach,
 	settings = {
 		["rust-analyzer"] = {
@@ -69,35 +69,47 @@ vim.lsp.config("rust_analyzer", {
 		},
 	},
 })
-vim.lsp.enable("rust_analyzer")
 
--- configure jdtls server
-vim.lsp.config("jdtls", {
+lspconfig.jdtls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-vim.lsp.enable("jdtls")
 
--- configure typescript server (ts_ls)
-vim.lsp.config("ts_ls", {
-	capabilities = capabilities,
-	on_attach = on_attach,
+-- configure typescript server with plugin
+-- typescript.setup({
+-- 	server = {
+-- 		capabilities = capabilities,
+-- 		on_attach = on_attach,
+-- 	},
+-- })
+
+lspconfig["ts_ls"].setup({
+	server = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	},
 })
-vim.lsp.enable("ts_ls")
 
 -- configure css server
-vim.lsp.config("cssls", {
+lspconfig["cssls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-vim.lsp.enable("cssls")
 
--- configure gopls server
-vim.lsp.config("gopls", {
+-- lspconfig["jdtls"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+
+lspconfig["gopls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-vim.lsp.enable("gopls")
+
+-- lspconfig["csharp_ls"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
 
 -- lspconfig.texlab.setup({
 -- 	capabilities = capabilities,
@@ -129,27 +141,46 @@ vim.lsp.enable("gopls")
 -- 	-- },
 -- })
 
--- configure pyright server
-vim.lsp.config("pyright", {
+lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-vim.lsp.enable("pyright")
 
--- configure bufls server
-vim.lsp.config("bufls", {
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-vim.lsp.enable("bufls")
+-- lspconfig["pyright"].setup({
+-- 	on_attach = on_attach,
+-- 	settings = {
+-- 		pyright = { autoImportCompletion = true },
+-- 		python = {
+-- 			analysis = {
+-- 				autoSearchPaths = true,
+-- 				diagnosticMode = "openFilesOnly",
+-- 				useLibraryCodeForTypes = true,
+-- 				typeCheckingMode = "off",
+-- 			},
+-- 		},
+-- 	},
+-- })
 
--- configure clangd server
-vim.lsp.config("clangd", {
+lspconfig["bufls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	root_dir = vim.fs.root(0, { ".git" }),
 })
-vim.lsp.enable("clangd")
+
+-- lspconfig["pylsp"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+
+-- lspconfig["ccls"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+
+lspconfig["clangd"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	root_dir = lspconfig.util.root_pattern(".git"),
+})
 
 -- configure emmet language server
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -182,7 +213,7 @@ vim.lsp.enable("clangd")
 -- })
 
 -- configure lua server (with special settings)
-vim.lsp.config("lua_ls", {
+lspconfig.lua_ls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
@@ -198,9 +229,10 @@ vim.lsp.config("lua_ls", {
 			},
 		},
 	},
-	root_dir = vim.fs.root(0, { "init.lua", ".git" }),
+	root_dir = function(fname)
+		return lspconfig.util.root_pattern("init.lua", ".git")(fname) or lspconfig.util.path.dirname(fname)
+	end,
 })
-vim.lsp.enable("lua_ls")
 
 -- require("nvim-rooter").setup({
 -- 	rooter_patterns = { ".git", ".hg", ".svn" },

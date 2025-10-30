@@ -1,18 +1,31 @@
 -- import lspsaga safely
-local saga_status, saga = pcall(require, "lspsaga.nvim")
+local saga_status, saga = pcall(require, "lspsaga")
 if not saga_status then
 	return
 end
 
-saga.init_lsp_saga({
+saga.setup({
+	-- Disable lightbulb to prevent "line out of range" errors
+	lightbulb = {
+		enable = false,
+		sign = false,
+		virtual_text = false,
+	},
 	-- keybinds for navigation in lspsaga window
-	move_in_saga = { prev = "<C-k>", next = "<C-j>" },
+	scroll_preview = {
+		scroll_down = "<C-j>",
+		scroll_up = "<C-k>",
+	},
 	-- use enter to open file with finder
-	finder_action_keys = {
-		open = "<CR>",
+	finder = {
+		keys = {
+			open = "<CR>",
+		},
 	},
 	-- use enter to open file with definition preview
-	definition_action_keys = {
-		edit = "<CR>",
+	definition = {
+		keys = {
+			edit = "<CR>",
+		},
 	},
 })
