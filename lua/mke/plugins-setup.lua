@@ -9,6 +9,7 @@ local ensure_packer = function()
 	return false
 end
 
+
 local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim with this file is saved
