@@ -70,6 +70,7 @@ return packer.startup(function(use)
 	-- github copilot
 	use("github/copilot.vim")
 
+
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
