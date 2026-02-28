@@ -9,7 +9,6 @@ local ensure_packer = function()
 	return false
 end
 
-
 local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim with this file is saved
@@ -25,7 +24,6 @@ if not status then
 	return
 end
 
-
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("preservim/tagbar")
@@ -33,6 +31,7 @@ return packer.startup(function(use)
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
 
+	-- toto: figure out why gruvbox theme not working on work config anymore
 	-- use("gruvbox-community/gruvbox")
 	-- use("morhetz/gruvbox")
 	use("micahke/gruvbox.nvim")
